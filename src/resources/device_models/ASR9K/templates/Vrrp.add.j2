@@ -1,0 +1,10 @@
+router vrrp
+ interface {{ name }}
+  address-family ipv4
+   vrrp {{ vrid }}
+    priority {{ prio }}
+    address {{ vaddr4 }}
+    text-authentication {{ password }}
+   !
+  !
+ !

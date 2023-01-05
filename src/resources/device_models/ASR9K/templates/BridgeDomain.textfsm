@@ -1,0 +1,13 @@
+Value Required name (\S+)
+Value group (\S+)
+Value id (\d+)
+Value List ac_ifs (\S+)
+
+Start
+  ^Bridge group: \S+, bridge-domain: \S+, id: \d+, -> Continue.Record
+  ^Bridge group: ${group}, bridge-domain: ${name}, id: ${id},
+  ^  List of ACs: -> Acs
+
+Acs
+  ^    ${ac_ifs}, state: \S+,
+  ^  List of Access VFIs: -> Start

@@ -1,0 +1,11 @@
+policy-map {{ name }}
+{% for cname,rules in classes.items() %}
+ class {{ cname }}
+{% for rule in rules %}
+  {{ rule }}
+{% endfor %}
+ !
+{% endfor %}
+ end-policy-map
+!
+

@@ -1,0 +1,10 @@
+Value Filldown vrf (\S+)
+Value Filldown af (\S+)
+Value Required destination (\d+\.\d+\.\d+\.\d+\/\d+)
+Value Required nexthop (\d+\.\d+\.\d+\.\d+|\S+\d+)
+
+
+Start
+  ^\s+vrf ${vrf}
+  ^\s+address-family ${af} unicast
+  ^\s+${destination} ${nexthop} -> Record

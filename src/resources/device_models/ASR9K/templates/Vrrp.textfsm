@@ -1,0 +1,12 @@
+Value Required iface (\S+)
+Value Required vaddr4 (\d+\.\d+\.\d+\.\d+)
+Value prio (\d+)
+Value Required vrid (\d+)
+Value password (\S+)
+
+Start
+  ^\S+ - \S+ vrID \d+ -> Continue.Record
+  ^${iface} - \S+ vrID ${vrid}
+  ^  Virtual IP address is ${vaddr4}
+  ^    Configured priority ${prio},
+  ^  Authentication enabled, string ${password}

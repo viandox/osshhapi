@@ -1,0 +1,16 @@
+#############################################
+# Vlan config template for CE series Das role
+#############################################
+
+{% for i in c.fabric_ifs %}
+interface {{ i['name'] | translate_if_name() }}
+{% if i['dotadlan_tp_attributes']['is_legacy'] == True %}
+ undo port trunk allow vlan {{  c['vlan_id'] }}
+{% else %}
+ undo port hybrid tagged vlan {{  c['vlan_id'] }}
+{% endif%} quit
+#
+{% endfor %}
+
+undo vlan {{ c['vlan_id'] }}
+#

@@ -1,0 +1,6 @@
+Value Required name ((?!nVFabric)\S+)
+Value description (.+)
+Value state (administratively down|up|down)
+
+Start
+  ^${name}\s+${state}\s+\S+\s+${description} -> Record

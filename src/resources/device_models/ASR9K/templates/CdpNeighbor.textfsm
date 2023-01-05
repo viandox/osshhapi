@@ -1,0 +1,12 @@
+Value Required hostname ([0-9a-zA-Z-\.]+)
+Value model (\S+)
+Value local_port (.+)
+Value remote_port (.+)
+
+Start
+  ^Device ID:\s?${hostname}
+  ^Platform: .*?${model}( Series)?,
+  ^Interface: ${local_port}
+  ^Port ID \(outgoing port\): ${remote_port}
+  ^--------------- -> Record
+

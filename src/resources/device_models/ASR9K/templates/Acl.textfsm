@@ -1,0 +1,11 @@
+Value Required name (\S+)
+Value Required af (\S+)
+Value List rules (\d+ .*)
+
+
+Start
+  ^(\S+) access-list (\S+) -> Continue.Record
+  ^${af} access-list ${name} -> Continue
+  ^\S+ \S+ \d+ .*CET -> Next
+  ^\s${rules}
+

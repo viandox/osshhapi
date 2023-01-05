@@ -1,0 +1,21 @@
+router static
+{% if vrf is not defined %}
+{% if af == 'ipv4' %}
+ address-family ipv4 unicast
+{% elif af == 'ipv6'  %}
+ address-family ipv6 unicast
+{% endif %}
+  {{ destination }} {{ nexthop }}
+ !
+{% else %}
+ vrf {{ vrf }}
+{% if af == 'ipv4' %}
+ address-family ipv4 unicast
+{% elif af == 'ipv6'  %}
+ address-family ipv6 unicast
+{% endif%}
+  {{ destination }} {{ nexthop }}
+ !
+{% endif%}
+!
+

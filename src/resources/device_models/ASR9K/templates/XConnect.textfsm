@@ -1,0 +1,25 @@
+Value Required name (\S+)
+Value Required group (\S+)
+Value ac_if (\S+)
+Value ac_mtu (\d+)
+Value ac_outer_encap (\d+)
+Value pw_id (\d+)
+Value pw_remote_ip (\d+\.\d+\.\d+\.\d+)
+Value pw_type (\S+)
+Value pw_id_backup (\d+)
+Value pw_remote_ip_backup (\d+\.\d+\.\d+\.\d+)
+Value pw_type_backup (\S+)
+
+Start
+  ^Group \S+, XC \S+, state is -> Continue.Record
+  ^Group ${group}, XC ${name}, state is
+  ^  AC: ${ac_if}, state is
+  ^  VLAN ranges: [${ac_outer_encap}, 2]
+  ^    MTU ${ac_mtu};
+  ^  PW: neighbor ${pw_remote_ip}, PW ID ${pw_id}, state is
+  ^    PW type ${pw_type},
+  ^  Backup PW: -> Backup
+
+Backup
+  ^  PW: neighbor ${pw_remote_ip_backup}, PW ID ${pw_id_backup}, state is
+  ^    PW type ${pw_type_backup}, -> Start

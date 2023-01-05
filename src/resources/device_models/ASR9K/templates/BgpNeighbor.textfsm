@@ -1,0 +1,15 @@
+Value Required ipaddr ((\d+\.){3}(\d+))
+Value description (.+)
+Value state (\S+)
+Value remote_as (\d+)
+Value uptime (\S+)
+Value vrf (\S+)
+
+Start
+  ^BGP neighbor is -> Continue.Record
+  ^ Remote AS ?${remote_as}, local AS
+  ^ Description: ?${description}$$
+  ^  BGP state = ?${state}, up for ?${uptime}
+  ^  BGP state = ?${state}
+  ^BGP neighbor is ?${ipaddr}$$
+  ^BGP neighbor is ?${ipaddr}, vrf ?${vrf}

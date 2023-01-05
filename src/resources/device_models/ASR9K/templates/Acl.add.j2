@@ -1,0 +1,6 @@
+{{ af }} access-list {{ name }}
+{% for r in rules %}
+  {{ r['seq'] }} {{ r['action'] }} {{ af }} {{ r['match'] }}
+{% endfor %}
+!
+

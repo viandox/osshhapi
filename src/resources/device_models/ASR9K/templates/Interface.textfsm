@@ -1,0 +1,11 @@
+Value Required name ((?!nVFabric)\S+)
+Value description (.+)
+Value vlan_id (\d+)
+Value state (administratively down|up|down)
+
+Start
+  ^((?!nVFabric)\S+) is (administratively down|up|down), -> Continue.Record
+  ^${name} is ${state},
+  ^  Description: ${description}
+  ^  Encapsulation 802.1Q Virtual LAN, VLAN Id ${vlan_id},
+  ^    Outer Match: Dot1Q VLAN ${vlan_id}

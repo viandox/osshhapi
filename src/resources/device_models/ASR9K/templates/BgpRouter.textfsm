@@ -1,0 +1,7 @@
+Value Required asn (\d+)
+Value router_id (\S+)
+
+Start
+  ^Autonomous System: ${asn}
+  ^Router ID: ${router_id}
+  ^Node\s+ -> Record

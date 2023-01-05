@@ -1,0 +1,18 @@
+Value Required parent_iface (\S+?)
+Value Required name (\S+)
+Value Filldown vc_group (\S+)
+Value Filldown vc_name (\S+)
+Value Filldown vc_type (\S+)
+Value encap_type (VLAN|Routed-Interface|Ethernet)
+Value encap_outer (\[\d+, \d+\]|any)
+Value encap_inner (\d+)
+
+Start
+  ^Group ${vc_group}, ${vc_type} ${vc_name}, state is .*
+  ^\s+AC: (\S+), state is (administratively down|up|down) -> Continue.Record
+  ^\s+AC: ${name}, state is (administratively down|up|down) -> Continue
+  ^\s+AC: ${parent_iface}(\.\d+)?, state is (administratively down|up|down)
+  ^Group ${vc_group}, ${vc_type} ${vc_name}, state is .*
+  ^Bridge group: ${vc_group}, ${vc_type}-domain: ${vc_name}, id .*
+  ^\s+Type ${encap_type}(;)?
+  ^\s+VLAN ranges: ${encap_outer}

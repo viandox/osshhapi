@@ -1,0 +1,23 @@
+{
+  "platform": "iosxr",
+  "config_junks": ["Current configuration.*bytes\n", "% Invalid.*marker\\.\n", "\\S+\\s\\S+\\s+\\d+\\s\\d+:\\d+:\\d+\\.\\d+\\s\\S+\n"],
+  "interface_name_maps": {
+    "Te": "TenGigE",
+    "Be": "Bundle-Ether",
+    "BE": "Bundle-Ether",
+    "Gi": "GigabitEthernet",
+    "He": "HundredGigE"
+  },
+  "resource_naming_conventions": {
+    "l3": {
+      "custom_prefix_list_pattern": "pfx-(\\S+)",
+      "custom_service_policy_pattern": "qos-(in|out)-((\\d+)(m|g|M|G)|(\\S+-\\d+))",
+      "custom_route_policy_pattern": "(\\S+-(in|out))\\((pfx-?.*)\\)"
+    },
+    "l2": {
+      "custom_prefix_list_pattern": "pfx-(\\S+)",
+      "custom_service_policy_pattern": "\\S+?-(\\d+)(m|g|M|G)?",
+      "custom_route_policy_pattern": "(\\S+-(in|out))\\((pfx-?.*)\\)"
+    }
+  }
+}

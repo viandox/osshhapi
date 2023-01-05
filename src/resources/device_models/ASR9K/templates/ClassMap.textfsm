@@ -1,0 +1,13 @@
+Value Required name (\S+)
+Value description (.*)
+Value List rules (.+)
+
+
+Start
+  ^\S+ \S+ \d+ .*CET -> Next
+  ^ +! -> Next
+  ^ description ${description}
+  ^class-map (\S+) ${name}
+  ^\s+end-class-map -> Record
+  ^ ${rules}
+

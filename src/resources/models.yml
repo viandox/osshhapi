@@ -1,0 +1,191 @@
+SampleResource:
+  name:
+    type: str
+    required: true
+  description:
+    type: str
+    
+Interface:
+  name:
+    type: str
+    required: true
+  description:
+    type: str
+    required: true
+  state:
+    type: str
+    required: true
+  vlan_id:
+    type: int
+
+XConnect:
+  name:
+    type: str
+    required: true
+  group:
+    type: str
+    required: true
+  ac_if:
+    type: str
+  ac_mtu:
+    type: int
+  ac_outer_encap:
+    type: int
+  pw_id:
+    type: int
+  pw_remote_ip:
+    type: str
+  pw_type:
+    type: str
+  pw_id_backup:
+    type: str
+  pw_remote_ip_backup:
+    type: str
+  pw_type_backup:
+    type: str
+
+IpInterface:
+  name:
+    type: str
+    required: true
+  ipmask4:
+    type: str
+  ipaddr4:
+    type: str
+    required: true
+  vrf:
+    type: int
+
+VcEndpoint:
+  name:
+    type: str
+    required: true
+  parent_iface:
+    type: str
+    required: true
+  vc:
+    type: ref
+  encap_type:
+    type: str
+    required: true
+  encap_outer:
+    type: list
+  encap_inner:
+    type: int
+
+StaticRoute:
+  vrf:
+    type: str
+    required: true
+    default: 'default'
+  af:
+    type: str
+    required: true
+  destination:
+    type: str
+    required: true
+    match_re: '\d+\.\d+\.\d+\.\d+/\d+'
+  nexthop:
+    type: str
+    required: true
+
+BridgeDomain:
+  name:
+    type: str
+    required: true
+  group:
+    type: str
+    required: true
+  id:
+    type: str
+    required: true
+  ac_ifs:
+    type: List
+    required: true
+
+BgpRouter:
+  asn:
+    type: int
+    required: true
+  router_id:
+    type: str
+
+Acl:
+  name:
+    type: str
+    required: true
+  af:
+    type: str
+    required: true
+  rules:
+    type: dict
+    required: true
+
+
+PolicyMap:
+  name:
+    type: str
+    required: true
+  classes:
+    type: dict
+    required: true
+
+RoutePolicy:
+  name:
+    type: str
+    required: true
+  args:
+    type: str
+  policy:
+    type: txt
+
+PrefixSet:
+  name:
+    type: str
+    required: true
+  prefixes:
+    type: txt
+
+
+ClassMap:
+  name:
+    type: str
+    required: true
+  description:
+    type: str
+  rules:
+    type: list
+    required: true
+
+Vrf:
+  name:
+    type: str
+    required: true
+  rd:
+    type: str
+    required: true
+  import_rts:
+    type: list
+  export_rts:
+    type: list
+  interfaces:
+    type: list
+  import_policy:
+    type: list
+  export_policy:
+    type: str
+
+Vrrp:
+  iface:
+    type: str
+    required: true
+  vaddr4:
+    type: str
+    required: true
+  prio:
+    type: int
+  vrid:
+    type: int
+    required: true
+  password:
+    type: str

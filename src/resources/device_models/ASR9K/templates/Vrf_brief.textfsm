@@ -1,0 +1,11 @@
+Value Required name (\S+)
+Value rd (\S+|not set)
+Value List import_rts (\d+:\d+)
+Value List export_rts (\d+:\d+)
+
+
+Start
+  ^\S+\s+(\S+|not set)\s+$$ ->  Continue.Record
+  ^${name}\s+${rd}\s+$$ -> Continue
+  ^\s+import\s+${import_rts}\s+IP
+  ^\s+export\s+${export_rts}\s+IP

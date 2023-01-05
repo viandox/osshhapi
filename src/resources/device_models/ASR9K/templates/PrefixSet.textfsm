@@ -1,0 +1,10 @@
+Value Required name (\S+)
+Value List prefixes (.*)
+
+
+Start
+  ^\S+ \S+ \d+ .*CET -> Next
+  ^prefix-set ${name}
+  ^\s+${prefixes}
+  ^end-set -> Record
+

@@ -1,0 +1,11 @@
+Value Required name (\S+)
+Value args (.*)
+Value List policy (.*)
+
+
+Start
+  ^\S+ \S+ \d+ .*CET -> Next
+  ^route-policy ${name}(\(${args}\))?
+  ^\s${policy}
+  ^end-policy -> Record
+

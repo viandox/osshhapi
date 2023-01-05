@@ -1,0 +1,26 @@
+Value Required name (\S+)
+Value rd (\S+|not set)
+Value List import_rts (\d+:\d+)
+Value List export_rts (\d+:\d+)
+Value List interfaces (\S+)
+Value import_policy (\S+)
+Value export_policy (\S+)
+
+Start
+  ^VRF ${name}; RD ${rd}; VPN ID
+  ^Interfaces -> Interfaces
+  ^$$ -> Record
+
+Interfaces
+  ^  ${interfaces}$$
+  ^Address family IPV4 Unicast$$ -> ImportRTs
+
+ImportRTs
+  ^\s+RT:${import_rts}$$
+  ^\s+Export VPN route-target communities -> ExportRTs
+
+ExportRTs
+  ^\s+RT:${export_rts}
+  ^\s+Import route policy: ${import_policy}
+  ^\s+Export route policy: ${export_policy} -> Start
+  ^\s+No export route policy -> Start

@@ -1,0 +1,19 @@
+#############################################
+# Vlan config template for S series adlanbridge role
+#############################################
+
+vlan {{ c['vlan_id'] }}
+ description {{ c['description'] }}
+ name {{ c['label'] }}
+ quit
+#
+{% for i in c.fabric_ifs %}
+interface {{ i['name'] | translate_if_name() }}
+{% if i['dotadlan_tp_attributes']['is_legacy'] == True %}
+ port trunk allow vlan {{  c['vlan_id'] }}
+{% else %}
+ port hybrid tagged vlan {{  c['vlan_id'] }}
+{% endif%}
+ quit
+#
+{% endfor %}

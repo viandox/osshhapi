@@ -1,0 +1,10 @@
+Value Required name (\S+\d+\.\d+)
+Value Required ipaddr4 (\d+\.\d+\.\d+\.\d+)
+Value ipmask4 (\d+)
+Value vrf (\S+)
+Value vlan_id (\d+)
+
+Start
+  ^${name} is (Up|Down),
+  ^  Vrf is ${vrf} \(vrfid
+  ^  Internet address is ${ipaddr4}/${ipmask4}

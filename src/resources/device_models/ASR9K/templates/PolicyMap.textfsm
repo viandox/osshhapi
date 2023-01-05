@@ -1,0 +1,11 @@
+Value Required name (\S+)
+Value List rules ( +.+)
+
+
+Start
+  ^\S+ \S+ \d+ .*CET -> Next
+  ^ +! -> Next
+  ^policy-map ${name}
+  ^\s+end-policy-map -> Record
+  ^${rules}
+
